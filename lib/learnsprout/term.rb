@@ -29,10 +29,10 @@ module LearnSprout
     end
 
     def current?
-      return true if @start_date && !@end_date && Time.now >= @start_date
-      return true if @end_date && !@start_date && Time.now <= @end_date
-      return true if !@end_date && !@start_date
-      return true if Time.now >= @start_date && Time.now <= @end_date
+      return true if !@start_date && !@end_date
+      return true if @start_date && !@end_date && Date.today >= @start_date
+      return true if !@start_date && @end_date && Date.today <= @end_date
+      return true if Date.today >= @start_date && Date.today <= @end_date
       false
     end
 
