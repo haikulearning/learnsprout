@@ -15,7 +15,8 @@ module LearnSprout
                   :middle_name,
                   :gender,
                   :exit_date,
-                  :entry_date
+                  :entry_date,
+                  :extras
 
     def initialize(attrs={})
       @client = attrs["client"]
@@ -35,6 +36,7 @@ module LearnSprout
       @gender = attrs["gender"]
       @exit_date = Date.parse(attrs["exit_date"]) if attrs["exit_date"]
       @entry_date = Date.parse(attrs["entry_date"]) if attrs["entry_date"]
+      @extras = attrs["extras"]
     end
   end
 end 

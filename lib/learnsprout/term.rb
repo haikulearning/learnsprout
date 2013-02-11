@@ -8,7 +8,8 @@ module LearnSprout
                   :school_id,
                   :time_updated,
                   :updated_at,
-                  :section_ids
+                  :section_ids,
+                  :extras
 
     def initialize(attrs={})
       @client = attrs["client"]
@@ -24,6 +25,7 @@ module LearnSprout
       if attrs["sections"]
         @section_ids = attrs["sections"].collect { |section| section["id"] }
       end
+      @extras = attrs["extras"]
     end
 
     def current?

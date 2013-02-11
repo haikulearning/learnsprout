@@ -6,7 +6,8 @@ module LearnSprout
                   :name,
                   :number,
                   :time_updated,
-                  :updated_at
+                  :updated_at,
+                  :extras
 
     def initialize(attrs={})
       @client = attrs["client"]
@@ -17,6 +18,7 @@ module LearnSprout
       @time_updated = attrs["time_updated"]
       @updated_at = Time.at(@time_updated) if @time_updated
       @school_id = attrs["school"]["id"] if attrs["school"]
+      @extras = attrs["extras"]
     end
 
     def school

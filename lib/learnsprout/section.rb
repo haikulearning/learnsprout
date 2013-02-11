@@ -9,7 +9,8 @@ module LearnSprout
                   :teacher_id,
                   :school_id,
                   :course_id,
-                  :student_ids
+                  :student_ids,
+                  :extras
 
     def initialize(attrs={})
       @client = attrs["client"]
@@ -33,6 +34,7 @@ module LearnSprout
           end
         end
       end
+      @extras = attrs["extras"]
     end
 
     def term
