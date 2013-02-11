@@ -22,10 +22,10 @@ module LearnSprout
       @middle_name = attrs["middle_name"]
       @last_name = attrs["last_name"]
       @title = attrs["title"]
-      @address = attrs["address"] && Address.new(attrs["address"])
+      @address = Address.new(attrs["address"]) if attrs["address"]
       @school_id = attrs["school"] && attrs["school"]["id"]
       @number = attrs["number"]
-      @phone = attrs["phone"] && Phone.new(attrs["phone"])
+      @phone = Phone.new(attrs["phone"]) if attrs["phone"]
       @time_updated = attrs["time_updated"]
       @updated_at = Time.at(@time_updated) if @time_updated
       @email = attrs["email"]
