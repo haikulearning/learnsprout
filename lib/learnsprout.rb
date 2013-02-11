@@ -1,4 +1,5 @@
-module LearnSprout def self.endpoint=(endpoint)
+module LearnSprout
+  def self.endpoint=(endpoint)
     @@endpoint = endpoint
   end
 
