@@ -13,6 +13,7 @@ module LearnSprout
                   :time_updated,
                   :updated_at,
                   :email,
+                  :is_active,
                   :extras
 
     def initialize(attrs={})
@@ -30,6 +31,7 @@ module LearnSprout
       @time_updated = attrs["time_updated"]
       @updated_at = Time.at(@time_updated) if @time_updated
       @email = attrs["email"]
+      @is_active = attrs["is_active"]
       @extras = attrs["extras"]
     end
 
