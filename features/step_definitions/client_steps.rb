@@ -47,6 +47,24 @@ Given /^(?:When )?I request an org with id ([a-f0-9]{24})$/ do |org_id|
     @org = @client.org(org_id)
 end
 
+# Parents
+
+Given /^(?:When )?I request parents for an organization with id ([a-f0-9]{24})$/ do |org_id|
+    @page = @client.beta_parents(org_id)
+end
+
+Given /^(?:When )?I request a parent with id ([a-f0-9]{24}) for an org with id ([a-f0-9]{24})$/ do |parent_id, org_id|
+    @parent = @client.beta_parent(org_id, parent_id)
+end
+
+Given /^I should get a parent with id ([a-f0-9]{24})$/ do |parent_id|
+    @parent.parent_id.should == parent_id
+end
+
+Given /^I should not find a parent$/ do
+    @parent.parent_id.should be_nil
+end
+
 # Schools
 
 Given /^(?:When )?I request schools for an organization with id ([a-f0-9]{24})$/ do |org_id|

@@ -17,6 +17,26 @@ module LearnSprout
       instances_from_orgs(orgs)
     end
 
+    # beta route: v1.api.learnsprout.com/org/<org_id>/parent/<parent_id>?apikey=<api_key>&beta=1&format=haiku
+    def beta_parent(org_id, parent_id)
+      parent = get("org/#{org_id}/parent/#{parent_id}?apikey=#{@api_key}&beta=1&format=haiku")
+      parent["org_id"] = org_id
+      parent["client"] = self
+      Parent.new(parent)
+    end
+
+    # beta route: v1.api.learnsprout.com/org/<org_id>/parent?apikey=<api_key>&beta=1&format=haiku
+    def beta_parents(org_id, options = {})
+      school_id = options[:school_id]
+      if (school_id)
+        raise NotImplementedError.new "The beta LearnSprout object doesn't support lookup by school id"
+        url = "org/#{org_id}/school/#{school_id}/parent?apikey=#{@api_key}"
+      else
+        url = "org/#{org_id}/parent?apikey=#{@api_key}&beta=1&format=haiku"
+      end
+      Page.new(url, Parent, :org_id => org_id, :client => self)
+    end
+
     def school(org_id, school_id)
       school = get("org/#{org_id}/school/#{school_id}?apikey=#{@api_key}")
       school["org_id"] = org_id
